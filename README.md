@@ -12,7 +12,7 @@ In the project directory, you can run:
 
 ![Image 2 ](images/0002.png)
 
-![Image 3 ](images/0001.png)
+![Image 3 ](images/0001.jpg)
 
 
 

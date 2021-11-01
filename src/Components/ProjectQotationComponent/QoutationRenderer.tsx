@@ -147,7 +147,7 @@ const QoutationRenderer = ({
         <Text style={styles.price}>Total Price :{projectPrice}</Text>
         <Text style={styles.client}>Client Name : {projectClientName}</Text>
         <Text style={styles.generated} fixed>
-          ~ Computer generated qotation signature is not required ~
+          ~ Computer generated quotation signature is not required ~
         </Text>
       </Page>
     </Document>

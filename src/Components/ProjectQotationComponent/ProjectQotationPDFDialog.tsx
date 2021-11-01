@@ -47,7 +47,7 @@ const ProjectQotationPDFDialog = ({
       keyboard={false}
     >
       <Modal.Header closeButton>
-        <Modal.Title>Download Qotation</Modal.Title>
+        <Modal.Title>Download Quotation</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         {confirmed && show ? (
@@ -68,7 +68,7 @@ const ProjectQotationPDFDialog = ({
             }
           </PDFDownloadLink>
         ) : (
-          'Your qotation is ready.'
+          'Your quotation is ready.'
         )}
       </Modal.Body>
       <Modal.Footer>

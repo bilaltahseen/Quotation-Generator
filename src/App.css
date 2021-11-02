@@ -56,3 +56,12 @@ h2 {
 .featurelist-container p:nth-child(2) {
   margin-right: 100px;
 }
+
+.nav-link {
+  color: #fff;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+  color: rgb(207, 207, 207);
+}

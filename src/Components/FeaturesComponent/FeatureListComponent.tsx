@@ -30,7 +30,7 @@ const FeatureListComponent = ({
       <tbody>
         {featuresList?.map((elem, index) => {
           return (
-            <tr className='d-flex'>
+            <tr key={elem.id} className='d-flex'>
               <td className='col-1'>{elem.id}</td>
               <td className='col-3'>{elem.title}</td>
               <td className='col-6'>{elem.description}</td>

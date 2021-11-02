@@ -1,0 +1,8 @@
+{
+  "projectName": "ABC",
+  "projectClient": "XYZ",
+  "projectDescription": "ABC123",
+  "projectFeatures": [{ "id": 1, "title": "abc", "description": "abcxyz123" }],
+  "projectPricing": "10,00 RS",
+  "projectCreationDate": "Tue Nov 02 2021 18:55:47 GMT+0500 (Pakistan Standard Time)"
+}

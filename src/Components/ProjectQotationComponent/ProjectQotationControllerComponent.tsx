@@ -14,6 +14,7 @@ interface Props {
   projectQotationList: Feature[];
   projectClientName: string;
   projectPrice: string;
+  _handFileSave(): void;
 }
 
 const ProjectQotationControllerComponent = ({
@@ -22,6 +23,7 @@ const ProjectQotationControllerComponent = ({
   projectQotationList,
   projectClientName,
   projectPrice,
+  _handFileSave,
 }: Props) => {
   const [show, setShowModal] = useState(false);
 
@@ -79,6 +81,21 @@ const ProjectQotationControllerComponent = ({
               }
             >
               Generate
+            </Button>
+            <Button
+              className='mx-2'
+              variant='success'
+              onClick={_handFileSave}
+              disabled={
+                projectName &&
+                projectDescription &&
+                projectQotationList.length > 0 &&
+                projectPrice
+                  ? false
+                  : true
+              }
+            >
+              Save
             </Button>
           </span>
         </OverlayTrigger>

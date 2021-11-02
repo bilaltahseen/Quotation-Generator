@@ -3,6 +3,7 @@ import ProjectTitleComponent from './ProjectTitleComponent';
 import ProjectFeaturesComponent from './FeaturesComponent/ProjectFeaturesControllerComponent';
 import ProjectPriceComponent from './ProjectPriceComponent';
 import ProjectQotationComponent from './ProjectQotationComponent/ProjectQotationControllerComponent';
+import ProjectFileSystemController from './FileSystemComponent/ProjectFileSystemController';
 
 interface Props {}
 interface Feature {
@@ -10,17 +11,18 @@ interface Feature {
   title: string;
   description: string;
 }
-
+interface ProjectFileType {
+  projectName: string;
+  projectClient: string;
+  projectDescription: string;
+  projectFeatures: Feature[];
+  projectPricing: string;
+  projectCreationDate: string;
+}
 const QoutationControllerComponent = (props: Props) => {
   const [dialogState, setDialogState] = useState(false);
   const [featureName, setFeatureName] = useState('');
-  const [featuresList, setFeaturesList] = useState<Feature[]>([
-    {
-      id: 1,
-      title: 'Frontend',
-      description: 'Hello 1',
-    },
-  ]);
+  const [featuresList, setFeaturesList] = useState<Feature[]>([]);
   const [description, setDescription] = useState('');
   const [editDialogState, setEditDialogState] = useState(false);
 
@@ -33,6 +35,8 @@ const QoutationControllerComponent = (props: Props) => {
   const [projectDescription, setProjectDescription] = useState('');
 
   const [projectPrice, setProjectPrice] = useState('');
+
+  const [showFileDialog, setShowFileDialog] = useState(false);
 
   const _handleClose = () => {
     setDialogState(false);
@@ -123,8 +127,51 @@ const QoutationControllerComponent = (props: Props) => {
     }
   };
 
+  const _handleFileClose = () => {
+    setShowFileDialog(false);
+  };
+
+  const _handleFileLoad = (project: ProjectFileType) => {
+    setProjectName(project.projectName);
+    setProjectDescription(project.projectDescription);
+    setClientName(project.projectClient);
+    setFeaturesList(project.projectFeatures);
+    setProjectPrice(project.projectPricing);
+    setShowFileDialog(false);
+  };
+
+  const _handleFileOpen = () => {
+    setShowFileDialog(true);
+  };
+
+  const _handFileSave = () => {
+    const data = {
+      projectName: projectName,
+      projectClient: clientName,
+      projectDescription: projectDescription,
+      projectFeatures: featuresList,
+      projectPricing: projectPrice,
+      projectCreationDate: new Date().toString(),
+    };
+
+    const blob = new Blob([JSON.stringify(data)], { type: 'text/json' });
+    const elem = window.document.createElement('a');
+    elem.href = window.URL.createObjectURL(blob);
+    elem.download = `${projectName}_QoutationFile.json`;
+    document.body.appendChild(elem);
+    elem.click();
+    document.body.removeChild(elem);
+  };
+
   return (
     <div>
+      <ProjectFileSystemController
+        _handleFileClose={_handleFileClose}
+        _handleFileLoad={_handleFileLoad}
+        _handleFileOpen={_handleFileOpen}
+        showFileDialog={showFileDialog}
+      />
+
       <ProjectTitleComponent
         clientName={clientName}
         projectName={projectName}
@@ -166,6 +213,7 @@ const QoutationControllerComponent = (props: Props) => {
         projectName={projectName}
         projectPrice={projectPrice}
         projectQotationList={featuresList}
+        _handFileSave={_handFileSave}
       />
     </div>
   );

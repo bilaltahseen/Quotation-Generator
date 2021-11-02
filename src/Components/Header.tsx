@@ -7,7 +7,9 @@ const Header = (props: Props) => {
     <Navbar bg='dark' variant='dark'>
       <Container>
         <Navbar.Brand href='#home'>Open Source Project</Navbar.Brand>
+
         <Navbar.Toggle />
+
         <Navbar.Collapse className='justify-content-end'>
           <Navbar.Text>
             Owner
